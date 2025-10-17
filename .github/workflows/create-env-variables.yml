@@ -38,5 +38,9 @@ jobs:
                 first_name: John
                 testvar: value-3
 
-           
 
+# Run echo "hello $greeting $first_name,"
+# output =>
+# - hello Dear John,
+# - today is Sunday
+# - testvar value-3
