@@ -6,8 +6,12 @@ on:
     # trigger the workflow on push and pull request events but only for the main branch.
     push: 
         branches: ["main"]
-        branches-ignore: ["dev"] # if you want to ignore the push operation on dev branch.
-        paths: ".github/*" # there should be some modifications happened in this directory, strictly.
+        
+        # if you want to ignore the push operation on dev branch.
+        ## branches-ignore: ["dev"]
+        
+        # there should be some modifications happened in this directory, strictly.
+        ## paths: ".github/*" 
 
     pull_request:
         branches: ["main"]
@@ -26,6 +30,9 @@ jobs:
         steps:
             # check out your repository under $GITHUB_WORKSPACE, so the job can access it. 
             - uses: actions/checkout@v3
+            # action - reduce the amount of repetitive code, that you write in your workflow files.
+            # action can pull your git repository from github, setup the correct toolchain for your build environment or
+            # set up an authentication for your cloud provider.
 
             # runs a single command using the runners shell
             - name: Run a one-line script
@@ -37,14 +44,23 @@ jobs:
                    echo add another action to build
                    echo test, and deploy your project.
     
+    build-api:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Building API"
 
     build-db:
         needs: build-app
         runs-on: windows-latest
+        steps:
+            - run: echo "hello windows - initializing DB." 
 
     packaging:
         needs: [build-app, build-db]
-        runs-on: ubuntu-latest # or can be self-hosted
+        runs-on: macos-latest # or can be self-hosted
+        steps:
+            - run: echo "hello MacOs - process packaging."
+
         
 
 
