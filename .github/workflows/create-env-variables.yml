@@ -1,0 +1,42 @@
+# this is a basic workflow.
+name: learn environment variables
+
+# controls when the workflow will run
+on:
+    # if you want to run your workflow manually. (from the action tab)
+    workflow_dispatch:
+
+# define environment varibles. - global, across jobs
+env:
+    DAY_OF_WEEK: Sunday
+    testvar: value-1
+    range: 10
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.  
+jobs: 
+    # this workflow contains a single job called "build"
+    main-job: 
+        name: print all environment variables.
+        runs-on: ubuntu-latest
+
+        # scope of these variables - limited to this job
+        env:
+            greeting: Dear
+            testvar: value-2
+
+        # steps represent a sequence of tasks that will be executed as part of the job
+        steps:  
+            - name: print-values-of-environment-variables
+              run: |
+                echo "hello $greeting $first_name,"
+                echo "today is $DAY_OF_WEEK"
+                echo "testvar ${{env.testvar}}"
+
+              # scope of these variables - limited to this step
+              env:
+                first_name: John
+                testvar: value-3
+
+           
+
