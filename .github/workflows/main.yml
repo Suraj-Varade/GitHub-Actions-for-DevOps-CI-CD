@@ -1,1 +1,51 @@
+# this is a basic workflow.
+name: basic workflow
+
+# controls when the workflow will run
+on:
+    # trigger the workflow on push and pull request events but only for the main branch.
+    push: 
+        branches: ["main"]
+        branches-ignore: ["dev"] # if you want to ignore the push operation on dev branch.
+        paths: ".github/*" # there should be some modifications happened in this directory, strictly.
+
+    pull_request:
+        branches: ["main"]
+
+    # if you want to run your workflow manually. (from the action tab)
+    workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel.  
+jobs: 
+    # this workflow contains a single job called "build"
+    build-app: 
+        # the type of runner the job will run on. 
+        runs-on: ubuntu-latest
+
+        # steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            # check out your repository under $GITHUB_WORKSPACE, so the job can access it. 
+            - uses: actions/checkout@v3
+
+            # runs a single command using the runners shell
+            - name: Run a one-line script
+              run: echo hello world !!!!
+
+            # runs a second command using the runners shell
+            - name: Run a multi-line script
+              run: |
+                   echo add another action to build
+                   echo test, and deploy your project.
+    
+
+    build-db:
+        needs: build-app
+        runs-on: windows-latest
+
+    packaging:
+        needs: [build-app, build-db]
+        runs-on: ubuntu-latest # or can be self-hosted
+        
+
+
 
