@@ -4,8 +4,8 @@ name: basic workflow
 # controls when the workflow will run
 on:
     # trigger the workflow on push and pull request events but only for the main branch.
-    push: 
-        branches: ["main"]
+    ## push: 
+    ##    branches: ["main"]
         
         # if you want to ignore the push operation on dev branch.
         ## branches-ignore: ["dev"]
@@ -13,8 +13,8 @@ on:
         # there should be some modifications happened in this directory, strictly.
         ## paths: ".github/*" 
 
-    pull_request:
-        branches: ["main"]
+    ## pull_request:
+    ##    branches: ["main"]
 
     # if you want to run your workflow manually. (from the action tab)
     workflow_dispatch:

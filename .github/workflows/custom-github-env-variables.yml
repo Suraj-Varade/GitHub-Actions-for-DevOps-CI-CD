@@ -18,3 +18,12 @@ jobs:
             run: | 
                 echo "${{ env.action_state }}"
 
+
+# output: =>
+# set the value
+# Run echo "action_state=orange" >> $GITHUB_ENV
+
+# get the value
+# Run echo "orange"
+# orange
+ 
