@@ -1,0 +1,17 @@
+name: 9 - sharing values between steps and jobs
+
+on:
+    workflow_dispatch:
+
+jobs:
+    passing-values-between-steps:
+        runs-on: ubuntu-latest
+        steps:
+            - name: set the value using environment variables
+              run: |
+                echo "IsSharingEnabled=Yes" >> $GITHUB_ENV
+
+            - name: read the value from environment variables
+              id: read-from-env
+              run: echo ${{env.IsSharingEnabled}}
+

@@ -14,4 +14,7 @@ jobs:
             - name: "print secrets from environment"
               run: |
                 echo "printing the secret from production environment"
-                echo "value => ${{secrets.APP_SECRET}}"
+                echo "value => ${{secrets.APP_SECRET}}" 
+
+
+## if secrets are not found in environment secret then it will go to repository level secrets.
