@@ -22,7 +22,7 @@ jobs:
                 echo "::set-output name=IsProdEnv::True"
                 echo "::set-output name=IsBatchProcessingAllowed::True"
                 echo "::set-output name=IsTestingEnabled::False"
-                echo "::set-output name=CurrentTimeStamp::$(date + '%Y-%m-%d-%H-%M')"
+                echo "::set-output name=CurrentTimeStamp::$(date +%Y-%m-%d-%H-%M)"
 
             - name: read everything that you have set so far.
               run: |
