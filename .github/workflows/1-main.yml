@@ -1,5 +1,5 @@
 # this is a basic workflow.
-name: basic workflow
+name: 1 - basic workflow
 
 # controls when the workflow will run
 on:

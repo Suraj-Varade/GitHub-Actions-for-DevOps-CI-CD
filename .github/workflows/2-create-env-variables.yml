@@ -1,5 +1,5 @@
 # this is a basic workflow.
-name: learn environment variables
+name: 2 - learn environment variables
 
 # controls when the workflow will run
 on:

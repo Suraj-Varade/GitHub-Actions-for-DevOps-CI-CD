@@ -1,4 +1,4 @@
-name: custom GITHUB_ENV variable
+name: 3 - custom GITHUB_ENV variable
 
 on:
     workflow_dispatch:
