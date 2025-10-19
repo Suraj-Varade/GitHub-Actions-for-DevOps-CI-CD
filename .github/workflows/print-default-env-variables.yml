@@ -1,0 +1,11 @@
+name: default env variables
+
+on: 
+    workflow_dispatch:
+
+jobs:
+    main-job:
+        runs-on: ubuntu-latest
+        name: main-job to print all env variables
+        steps:
+            - run: env
