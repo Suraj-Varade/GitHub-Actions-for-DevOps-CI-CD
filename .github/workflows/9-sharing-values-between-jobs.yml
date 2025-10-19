@@ -15,3 +15,21 @@ jobs:
               id: read-from-env
               run: echo ${{env.IsSharingEnabled}}
 
+            - name: create another variable
+              id: variable-source
+              run: |
+                echo "performing a random task"
+                echo "::set-output name=IsProdEnv::True"
+                echo "::set-output name=IsBatchProcessingAllowed::True"
+                echo "::set-output name=IsTestingEnabled::False"
+                echo "::set-output name=CurrentTimeStamp::$(date + '%Y-%m-%d-%H-%M')"
+
+            - name: read everything that you have set so far.
+              run: |
+                echo "printing the values"
+                echo "IsSharingEnabled =>> ${{env.IsSharingEnabled}}"
+                echo "IsProdEnvironment =>> ${{steps.variable-source.outputs.IsProdEnv}}"
+                echo "IsBatchProcessingAllowed =>> ${{steps.variable-source.outputs.IsBatchProcessingAllowed}}"
+                echo "IsTestingEnabled =>> ${{steps.variable-source.outputs.IsTestingEnabled}}"
+                echo "CurrentTimeStamp =>> ${{steps.variable-source.outputs.CurrentTimeStamp}}"
+
