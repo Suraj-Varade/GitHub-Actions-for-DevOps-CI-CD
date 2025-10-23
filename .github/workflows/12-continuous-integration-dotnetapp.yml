@@ -11,7 +11,7 @@ env:
 defaults:
     run:
         shell: bash
-        working-directory: ../mywebapp
+        working-directory: ./mywebapp
 
 jobs:
     build:
@@ -34,7 +34,7 @@ jobs:
               run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/testapp
 
             - name: Upload artifact for deployment job
-              uses: actions/upload-artifacts@v4
+              uses: actions/upload-artifact@v4
               with:
                 name: .net app
                 path: ${{env.DOTNET_ROOT}}/testapp
