@@ -11,7 +11,7 @@ env:
 defaults:
     run:
         shell: bash
-        working-directory: ./mywebapp
+        working-directory: ../mywebapp
 
 jobs:
     build:
