@@ -5,6 +5,11 @@ env:
     AZURE_WEBAPP_PACKAGE_PATH: '.' # default to repository root
     DOTNET_VERSION: '9.0.x'
 
+defaults:
+    run:
+        shell: bash
+        working-directory: ./mywebapp
+
 on:
     push:
         branches: ['main']
