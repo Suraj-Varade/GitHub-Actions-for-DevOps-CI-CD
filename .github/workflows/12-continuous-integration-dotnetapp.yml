@@ -1,0 +1,43 @@
+name: 12 - continuous integration - .net web api 
+
+on: 
+    push:
+        branches: ['main']
+    workflow_dispatch:
+
+env: 
+    DOTNET_VERSION: '9.0.x' # use this .net version.
+
+defaults:
+    run:
+        shell: bash
+        working-directory: ./mywebapp
+
+jobs:
+    build:
+        runs-on: ubuntu-latest  ## this is a runner.
+        steps:
+            - uses: actions/checkout@v5 ## checkout the repository.
+
+            - name: Set up .net Core
+              uses: actions/setup-dotnet@v4   ## setting up the .net environment and it uses dotnet 9 version  
+              with: 
+                dotnet-version: ${{env.DOTNET_VERSION}}
+
+            - name: Install dependencies
+              run: dotnet restore
+
+            - name: build with dotnet
+              run: dotnet build --configuration Release
+
+            - name: dotnet publish
+              run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/testapp
+
+            - name: Upload artifact for deployment job
+              uses: actions/upload-artifacts@v4
+              with:
+                name: .net app
+                path: ${{env.DOTNET_ROOT}}/testapp
+
+
+
