@@ -4,9 +4,9 @@
 
 param storage_account_name_prefix string
 param location string = resourceGroup().location
-param container_registry_name string = 'learningte13acr'
-param azure_service_bus_name string = 'learningte13servicebus'
-param app_name string = 'learningte13appname'
+param container_registry_name string = 'newdemoacr'
+param azure_service_bus_name string = 'newdemoservicebus'
+param app_name string = 'newdemoappname'
 param service_plan_name string = 'ASP-${app_name}'
 var st_acct_name = '${storage_account_name_prefix}${uniqueString(resourceGroup().id)}'
 
