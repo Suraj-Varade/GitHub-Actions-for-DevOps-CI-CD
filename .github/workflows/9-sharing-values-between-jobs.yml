@@ -33,3 +33,12 @@ jobs:
                 echo "IsTestingEnabled =>> ${{steps.variable-source.outputs.IsTestingEnabled}}"
                 echo "CurrentTimeStamp =>> ${{steps.variable-source.outputs.CurrentTimeStamp}}"
 
+
+#
+#Run echo "printing the values"
+#printing the values
+#IsSharingEnabled =>> Yes
+#IsProdEnvironment =>> True
+#IsBatchProcessingAllowed =>> True
+#IsTestingEnabled =>> False
+#CurrentTimeStamp =>> 2025-10-19-10-52

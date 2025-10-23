@@ -1,0 +1,15 @@
+name: self-hosted runner (windows VM)
+
+on: 
+    workflow_dispatch:
+
+jobs:
+    main-jobs:
+        name: self hosted runner - main job
+        runs-on: ubuntu-latest # [self-hosted, Windows, X64, gpu] -- these are the labels
+        steps:
+            - name:  run inside self-hosted runner
+              run: echo "executing inside self hosted runner........"
+
+            - name: sleep for 100 seconds
+              run: sleep 100
