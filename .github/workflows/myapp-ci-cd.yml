@@ -2,7 +2,7 @@ name: Myapp CI-CD
 
 env:
     AZURE_WEBAPP_NAME: mysimplewebapp
-    AZURE_WEBAPP_PACKAGE_PATH: '.' # default to repository root
+    AZURE_WEBAPP_PACKAGE_PATH: './dotnet-app' # default to repository root
     DOTNET_VERSION: '9.0.x'
 
 defaults:
@@ -57,6 +57,7 @@ jobs:
               uses: actions/download-artifact@v4
               with:
                 name: dotnet-app
+                path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
             - name: Azure Login
               uses: azure/login@v2
@@ -68,4 +69,4 @@ jobs:
               uses: azure/webapps-deploy@v3
               with:
                 app-name: ${{ env.AZURE_WEBAPP_NAME }}
-                package: dotnet-app
+                package: ${{env.AZURE_WEBAPP_PACKAGE_PATH}}
