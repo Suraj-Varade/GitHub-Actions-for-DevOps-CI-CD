@@ -1,4 +1,4 @@
-name: self-hosted runner (windows VM)
+name: 10 - self-hosted runner (windows VM)
 
 on: 
     workflow_dispatch:

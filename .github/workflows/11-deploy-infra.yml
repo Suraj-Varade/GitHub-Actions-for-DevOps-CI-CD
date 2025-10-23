@@ -1,4 +1,4 @@
-name: deploy Infra
+name: 11 - deploy Infra
 
 on:
     workflow_dispatch:
